@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Piczer</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Piczer</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-	<link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="style.css" media="screen">
 
-        <a href="#"><h1 class="site-title"><i class="fas fa-camera"></i>Piczer</h1></a>
+    <a href="#"><h1 class="site-title"><i class="fas fa-camera"></i>Piczer</h1></a>
 
-        <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" defer></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" defer></script>
 
-    </head>
-    <body>
-        <header>
+    <script src="/index.js" charset="utf-8" defer></script>
 
-
-
-
+  </head>
+  <body>
+    <header>
 
       <nav class="navbar">
         <ul class="navlist">
-	  <button type="button" class="navitem" id="create-picz-button"><p>Create Picz</p></button>
+          <button type="button" class="navitem" id="create-picz-button"><p>Create Picz</p></button>
           <li class="navitem navbar-search">
             <input type="text" id="navbar-search-input" placeholder="Search...">
             <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
@@ -31,43 +29,58 @@
         </ul>
       </nav>
 
-        </header>
-        
-        <main class="picz-container">
-            <article class="pic">
-                <i href="https://imgur.com/QcDcEv3" class="pic-thumbnail"></i>
-                <div class="pic hidden">
-                    <h3>You are very observant</h3>
-                    <button type="button" class="add-tag-button"><p>Add Tag</p></button>
-                    <i href="https://imgur.com/QcDcEv3" class="pic-image"></i>
-                    <a href=""></a>
-                    <li class="tags"></li>
-                </div>
-            </article>
-        </main>
+    </header>
 
-        <div id="modal-backdrop" class="hidden"></div>
-        <div id="create-pic-modal" class="hidden">
-            <div class="modal-dialog">
-                <div class="modal-header">
-                    <h3>Create a Pic</h3>
-                    <button type="button" class="modal-close-button">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="pic-input-element">
-                        <label for="pic-title-input">Pic Title</label>
-                        <textarea id="pic-title-input"></textarea>
-                    </div>
-                    <div class="pic-input-element">
-                        <label for="pic-link-input">Pic Link</label>
-                        <input type="text" id="pic-link-input">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="modal-cancel-button">Cancel</button>
-                    <button type="button" class="modal-accept-button">Create Pic</button>
-                </div>
-            </div>
+    <main class="picz-container">
+
+      <article class="pic">
+        <i href="https://imgur.com/QcDcEv3" class="pic-thumbnail"></i>
+        <div class="openedPic hidden">
+          <h3>You are very observant</h3>
+          <button type="button" class="pic-close-button">&times;</button>
+          <button type="button" class="add-tag-button"><p>Add Tag</p></button>
+          <i href="https://imgur.com/QcDcEv3" class="pic-image"></i>
+          <a href=""></a>
+          <li class="tags"></li>
         </div>
-    </body>
+      </article>
+
+    </main>
+
+    <div class="backdrop hidden"></div>
+
+    <div id="create-pic-modal" class="hidden">
+
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Create a Pic</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="pic-input-element">
+            <label for="pic-title-input">Pic Title</label>
+            <textarea id="pic-title-input"></textarea>
+          </div>
+
+          <div class="pic-input-element">
+            <label for="pic-link-input">Pic Link</label>
+            <input type="text" id="pic-link-input">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal-cancel-button">Cancel</button>
+          <button type="button" class="modal-accept-button">Create Pic</button>
+        </div>
+
+      </div>
+
+    </div>
+  
+  </body>
+
 </html>
