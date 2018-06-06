@@ -30,12 +30,12 @@ function handleAcceptClick(){
       alert("Please complete all areas.");
    }else{
 
-      var picTemplate = Handlebars.template.pic;
+      var picTemplate = Handlebars.templates.pic;
       var picHTML = picTemplate({
 	 linkInput: linkInput,
 	 titleInput: titleInput
       });
-      var picContainer = document.querySelctor('.picz-container');
+      var picContainer = document.querySelector('.picz-container');
       picContainer.insertAdjacentHTML('beforeend',picHTML);
       hideCreatePicModal();
 
