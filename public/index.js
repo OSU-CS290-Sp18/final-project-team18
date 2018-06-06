@@ -22,7 +22,29 @@ function hideCreatePicModal(){
    clearInput();
 }
    
+function handleAcceptClick(){
+   var titleInput = document.querySelector('#pic-title-input').value.trim();
+   var linkInput = document.querySelector('#pic-link-input').value.trim();
 
+   if(!titleInput || !linkInput){
+      alert("Please complete all areas.");
+   }else{
+
+      var picTemplate = Handlebars.template.pic;
+      var picHTML = picTemplate({
+	 linkInput: linkInput,
+	 titleInput: titleInput
+      });
+      var picContainer = document.querySelctor('.picz-container');
+      picContainer.insertAdjacentHTML('beforeend',picHTML);
+      hideCreatePicModal();
+
+   }
+
+
+
+
+}
 
 
 
@@ -53,5 +75,25 @@ window.addEventListener('DOMContentLoaded', function() {
   for(var i = 0; i < exitModalButtons.length; i++){
 	exitModalButtons[i].addEventListener('click', hideCreatePicModal);
      }
+  var modalAcceptButton = document.querySelector('.modal-accept-button');
+  modalAcceptButton.addEventListener('click', handleAcceptClick);
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
