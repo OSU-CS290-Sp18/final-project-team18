@@ -9,6 +9,15 @@ a {
   text-decoration: none;
 }
 
+ul{
+  list-style-type: none;
+}
+li{
+
+  list-style-type: none;
+}
+
+
 
 .site-title {
   margin: 0px;
@@ -25,6 +34,7 @@ a {
   background-color: #505050;
   font-size: 18px;
   line-height: 22px;
+  padding-bottom: 40px;
   margin-bottom: 0px;
 }
 
@@ -56,28 +66,38 @@ a:focus {
 
 .navbar-search {
   float: right;
-  margin: 5px 20px 5px 0px;
+  margin: 0px 40px 0px 0px;
   padding: 0px;
   line-height: 38px;
 }
 
+p{
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 0px;
+}
+
 #create-picz-button {
+  height: 30px;
   float: left;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: normal;
   background-color: #331a00;
   color: #ff9933;
   border: 1px solid #333;
   border-radius: 10px;
   padding: 1px;
-  margin-top: 1px;
+  margin-top: 5px;
   margin-bottom: 1px;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
 #navbar-search-input {
+  width: 250px; 
   padding: 4px;
   font-size: 16px;
   background-color: #eee;
@@ -94,13 +114,13 @@ a:focus {
   margin-left: -5px;
   font-size: 16px;
   background: none;
-  border: none;
-  color: #343434;
+  border: 0;
+  color: #000000;
   cursor: pointer;
 }
 
 #navbar-search-button:hover {
-  color: #319df6;
+  color: #ff9933;
 }
 
 #navbar-search-button:focus {
@@ -116,8 +136,8 @@ a:focus {
 
 .pic-thumbnail {
   display: inline-block;
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   margin: 2px;
   padding: 20px;
   border: 1px solid #dadada;
