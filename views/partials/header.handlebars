@@ -1,0 +1,14 @@
+<header>
+  
+  <nav class="navbar">
+    <ul class="navlist">
+      {{#unless search}}
+        <li><button type="button" class="navitem" id="create-picz-button"><p>Create Picz</p></button></li>
+      {{/unless}}
+      <li class="navitem navbar-search">
+        <input type="text" id="navbar-search-input" placeholder="Search...">
+        <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
+      </li>
+    </ul>
+
+</header>
