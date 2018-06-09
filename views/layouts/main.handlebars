@@ -5,14 +5,29 @@
     <meta charset="utf-8">
     <title>Piczer</title>
 
-    <link rel="stylesheet" href="/style.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel=stylesheet">
+    <link rel="stylesheet" href="/style.css" media="screen">
 
+    <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/handlebars.js/4.0.11/handlebars.runtime.js" defer></script>
     <script src="/picTemplate.js" charset="utf-8" defer></script>
     <script src="/index.js" charset="utf-8" defer></script>
   </head>
   <body>
-    {{> header}}
+    <header>
+      <a href="/"><h1 class="site-title"><i class="fas fa-camera"></i>Piczer</h1></a>
+      <nav class="navbar">
+        <ul class="navlist">
+          <li><button type="button" class="navitem" id="create-picz-button"><p>Create Picz</p></button></li>
+          <li class="navitem navbar-search">
+            <input type="text" id="navbar-search-input" placeholder="Search...">
+            <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
+          </li>
+        </ul>
+    
+    </header>
+
     {{{body}}}
+
   </body>
 </html>
