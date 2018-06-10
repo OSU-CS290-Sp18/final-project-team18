@@ -21,8 +21,17 @@ function hideCreatePicModal(){
    backdrop.classList.add('hidden');
    clearInput();
 }
+
+function getSubID(){
+   var path = window.location.pathname;
+   var pathParts = path.split('/');
+   if(pathParts[1] === "subs"){
+      return pathParts[2];
+   }else return null;
+}
    
 function handleAcceptClick(){
+   console.log("clicked");
    var titleInput = document.querySelector('#pic-title-input').value.trim();
    var linkInput = document.querySelector('#pic-link-input').value.trim();
 
@@ -30,20 +39,33 @@ function handleAcceptClick(){
       alert("Please complete all areas.");
    }else{
 
-      var picTemplate = Handlebars.templates.pic;
-      var picHTML = picTemplate({
+      var request = new XMLHttpRequest();
+      var subID = getSubID();
+      var url = "/subs" + subID + "/addPic";
+      request.open("POST",url);
+
+      var requestBody = JSON.stringify({
 	 linkInput: linkInput,
-	 titleInput: titleInput
+	 titleInpur: titleInput
       });
-      var picContainer = document.querySelector('.picz-container');
-      picContainer.insertAdjacentHTML('beforeend',picHTML);
+
+      request.addEventListener('load',function(event){
+	 if(event.target.status === 200){
+	    var picTemplate = Handlebars.templates.pic;
+	    var picHTML = picTemplate({
+	       linkInput: linkInput,
+		titleInput: titleInput
+	    });
+	    var picContainer = document.querySelector('.picz-container');
+	    picContainer.insertAdjacentHTML('beforeend',picHTML);
+	 }else{
+	    alert("Error storing photo: " + event.target.response);
+	 }
+      });
+      request.setRequestHeader('Content-Type', 'application/json');
+      request.send(requestBody);
       hideCreatePicModal();
-
    }
-
-
-
-
 }
 
 
