@@ -187,6 +187,16 @@ p{
   border-radius: 15px;
 }
 
+#pic-title-input {
+  width: 280px;
+  height: 16.5px;
+}
+
+#pic-link-input {
+  width: 280px;
+  height: 16.5px;
+}
+
 .modal-header {
   position: relative;
   padding: 10px 20px;
@@ -224,6 +234,13 @@ p{
   flex: 1 75px;
   margin-right: 10px;
 }
+
+.modal-dialog {
+  background-color: #f2c9ae;
+  height: 250px;
+}
+
+
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -241,15 +258,93 @@ p{
   cursor: pointer;
 }
 
-.modal-footer .modal-cancel-button:hover {
+.modal-footer .modal-close-button {
+  position: static;
+  color: #ff9933;
+}
+
+.modal-footer .modal-close-button:hover {
   background-color: #eee;
 }
 
-.modal-footer .modal-accept-button {
-  background-color: #319df6;
-  color: #fff;
+.modal-footer .modal-accept-button { 
+ 
+  color: #ff9933; 
+  background-color: #331a00;
 }
 
 .modal-footer .modal-accept-button:hover {
-  background-color: #087dde;
+  background-color: #f2721d;
+}
+
+.openedPic {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  background-color: #f2c9ae;
+}
+
+.openedPic .pic-image{
+  margin: 50px;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
+  margin-top: 15px;
+}
+
+.picTitle {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 550;
+  margin-bottom: 0;
+}
+
+.pic-close-button {
+  position: absolute;
+  margin-right: 10px;
+  top: 5px;
+  right: 5px;
+  font-size: 40px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.add-tag-button { 
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #ff9933;
+  background-color: #331a00;
+  font-size: 20px;
+  border: 1px solid;
+  border-color: #331a00;
+  border-radius: 5px;
+  padding: 0px;
+  margin-top: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.tags {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000000;
+  margin-left: 50px;
+}
+
+.sub-card {
+  text-align: center;
+  width: 300px;
+  height: 35px;
+  font-weight: 600;
+  font-size: 25px;
+  margin: 30px;
+  border: 1px solid;
+  border-radius: 200px;
+  background-color: #331a00;
+}
+
+.sub-card a {
+  color: #ff9933;
 }
