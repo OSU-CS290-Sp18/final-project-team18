@@ -41,12 +41,12 @@ function handleAcceptClick(){
 
       var request = new XMLHttpRequest();
       var subID = getSubID();
-      var url = "/subs" + subID + "/addPic";
+      var url = "/subs/" + subID + "/addPic";
       request.open("POST",url);
 
       var requestBody = JSON.stringify({
-	 linkInput: linkInput,
-	 titleInpur: titleInput
+	 link: linkInput,
+	 title: titleInput
       });
 
       request.addEventListener('load',function(event){
