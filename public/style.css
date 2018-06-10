@@ -289,7 +289,7 @@ p{
 
 .openedPic .pic-image{
   height: 600px;
-  weight: 600px;
+  width: 600px;
   margin: 50px;
   padding-bottom: 30px;
   margin-bottom: 0px;
@@ -332,13 +332,11 @@ p{
 }
 
 .pic-delete-button {
-
-  background-color: #331a00;
   position: absolute;
   bottom: 5px;
   left: 10px;
-  color: #ff9933;
-  background-color: #331a00;
+  color: #000000;
+  background-color: #f90c0c;
   font-size: 20px;
   border: 1px solid;
   border-color: #331a00;
