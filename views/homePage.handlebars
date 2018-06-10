@@ -1,8 +1,14 @@
+<header>
+
+  <a href="/"><h1 class="site-title"><i class="fas fa-camera"></i>Piczer</h1></a>
+
+<header>
+
 <main class="home-page">
 
   {{#each subList}}
     <div class="sub-card">
-      <a href="/subs/{{@key}}">{{@key}}</a>
+      <a href="/subs/{{@key}}">{{subName}}</a>
     </div>
   {{/each}}
 
