@@ -24,5 +24,16 @@
       }
     ],
     "_locals": {}
+  },
+  "sequelmemes": {
+    "subName": "Sequel Memes",
+    "pics": [
+      {
+        "link": "https://i.redd.it/ft5iynfp5ga01.png",
+        "title": "GO AWAY MOM",
+        "tags": []
+      }
+    ],
+    "_locals": {}
   }
 }

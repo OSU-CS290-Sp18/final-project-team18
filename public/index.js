@@ -40,7 +40,7 @@ function getSubID(){
 }
 
 function onSubPage(){
-   var path = windows.location.pathname;
+   var path = window.location.pathname;
    var pathParts = path.split('/');
    if(pathParts[1] === "subs") return true;
    return false;
@@ -92,54 +92,102 @@ function handleAcceptClick(){
    }
 }
 
+function showCreateSubModal(){
+   var modal = document.querySelector('#create-sub-modal');
+   var backdrop = document.querySelector('.backdrop');
+   modal.classList.remove('hidden');
+   backdrop.classList.remove('hidden');
+}
+
+function clearSubInput(){
+   var nameInput = document.querySelector('#sub-name-input');
+   nameInput.value = '';
+}
+
+function hideCreateSubModal(){
+   var modal = document.querySelector('#create-sub-modal');
+   var backdrop = document.querySelector('.backdrop');
+   modal.classList.add('hidden');
+   backdrop.classList.add('hidden');
+   clearSubInput();
+}
+
+function handleSubAccept() {
+  var name = document.querySelector('#sub-name-input').value.trim();
+
+  if (!name) alert("Please enter a name");
+  else {
+    var request = new XMLHttpRequest();
+    var url = "/addSub";
+    request.open("POST", url);
+
+    var requestBody = JSON.stringify({
+      subName: name
+    });
+
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(requestBody);
+    hideCreateSubModal();
+  }
+}
 
 window.addEventListener('DOMContentLoaded', function() {
  
-  var piczContainer = document.querySelector('.picz-container');
-  piczContainer.addEventListener('click', function(event) {
-    if (event.target.classList.contains('pic-thumbnail')) {
-      event.target.parentNode.querySelector('.openedPic').classList.remove('hidden');
-      document.querySelector('.backdrop').classList.remove('hidden');
-    }
-    else if (event.target.classList.contains('pic-close-button')) {
-      event.target.parentNode.classList.add('hidden');
-      document.querySelector('.backdrop').classList.add('hidden');
-    }
-    else if (event.target.classList.contains('pic-delete-button')) {
-      console.log("== attempting a delete (index.js)");
-      var pic = event.target.parentNode.parentNode;
-      console.log(pic);
-      var index = Array.from(pic.parentNode.children).indexOf(pic);
-      var request = new XMLHttpRequest();
-      var subID = getSubID();
-      var url = url = "/subs/" + subID + "/deletePic";
-      request.open("DELETE", url);
-    
-      var requestBody = JSON.stringify({
-        pos: index
-      });
-
-      console.log(requestBody);
-
-      request.setRequestHeader('Content-Type', 'application/json');
-      request.send(requestBody);
-      hidePic();
-    }
-  });
-
-  var createPicButton = document.getElementById('create-picz-button');
-  createPicButton.addEventListener('click', showCreatePicModal);
   
   var exitModalButtons = document.getElementsByClassName('modal-close-button');
   for(var i = 0; i < exitModalButtons.length; i++){
-	exitModalButtons[i].addEventListener('click', hideCreatePicModal);
-     }
-  var modalAcceptButton = document.querySelector('.modal-accept-button');
-  modalAcceptButton.addEventListener('click', handleAcceptClick);
+	  exitModalButtons[i].addEventListener('click', hideCreatePicModal);
+  }
+  
 
   if(onSubPage()){
-     var searchButton == document.getElementById('navbar-search-button');
-     searchButton.addEventListener('click',search);
+    var piczContainer = document.querySelector('.picz-container');
+    piczContainer.addEventListener('click', function(event) {
+      if (event.target.classList.contains('pic-thumbnail')) {
+        event.target.parentNode.querySelector('.openedPic').classList.remove('hidden');
+        document.querySelector('.backdrop').classList.remove('hidden');
+      }
+      else if (event.target.classList.contains('pic-close-button')) {
+        event.target.parentNode.classList.add('hidden');
+        document.querySelector('.backdrop').classList.add('hidden');
+      }
+      else if (event.target.classList.contains('pic-delete-button')) {
+        console.log("== attempting a delete (index.js)");
+        var pic = event.target.parentNode.parentNode;
+        console.log(pic);
+        var index = Array.from(pic.parentNode.children).indexOf(pic);
+        var request = new XMLHttpRequest();
+        var subID = getSubID();
+        var url = url = "/subs/" + subID + "/deletePic";
+        request.open("DELETE", url);
+      
+        var requestBody = JSON.stringify({
+          pos: index
+        });
+  
+        console.log(requestBody);
+  
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(requestBody);
+        hidePic();
+      }
+    });
+  
+    var createPicButton = document.getElementById('create-picz-button');
+    createPicButton.addEventListener('click', showCreatePicModal);
+    
+    var modalAcceptButton = document.querySelector('.modal-accept-button');
+    modalAcceptButton.addEventListener('click', handleAcceptClick);
+
+    var searchButton = document.getElementById('navbar-search-button');
+    searchButton.addEventListener('click',search);
+  }
+  else {
+    var subAcceptButton = document.querySelector('.sub-accept-button');
+    subAcceptButton.addEventListener('click', handleSubAccept);
+
+    var createSubButton = document.getElementById('create-sub-button');
+    createSubButton.addEventListener('click', showCreateSubModal);
   }
 
 });

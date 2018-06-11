@@ -13,3 +13,34 @@
   {{/each}}
 
 </main>
+
+<div class="backdrop hidden"></div>
+
+<button type="button" id="create-sub-button"><p>Create Sub</p></button>
+
+<div id="create-sub-modal" class="hidden">
+
+  <div class="modal-dialog">
+    
+    <div class="modal-header">
+      <h3>Create a Sub</h3>
+      <button type="button" class="modal-close-button">&times;</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="pic-input-element">
+        <label for="sub-name-input">Sub Name</label>
+        <textarea id="sub-name-input"></textarea>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="modal-close-button">Cancel</button>
+      <button type="button" class="sub-accept-button">Create Sub</button>
+    </div>
+
+  </div>
+
+</div>

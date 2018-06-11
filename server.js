@@ -112,6 +112,24 @@ app.delete('/subs/:sub/deletePic', function(req, res, next) {
   }
 });
 
+app.post('/addSub', function (req, res, next) {
+  if (req.body && req.body.subName) {
+    if (subs[req.body.subName.replace(/\s/g, '').toLowerCase()]) res.status(400).send("That sub already exists");
+    else {
+      var sub = {
+        subName: req.body.subName,
+        pics: []
+      };
+      subs[req.body.subName.replace(/\s/g, '').toLowerCase()] = sub;
+      fs.writeFile('./subData.json', JSON.stringify(subs, null, 2), 'utf8', function (err) {
+        if (err) res.status(500).send("Error writing with new sub to JSON file");
+        else res.status(200).end();
+      });
+    }
+  }
+  else res.status(400).send("Request needs JSON body with subName");
+});
+
 app.use(express.static('public'));
 
 app.get('*', function(req, res) {
