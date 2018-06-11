@@ -68,17 +68,10 @@ function handleAcceptClick(){
    }
 }
 
-
-
-
-
-
 window.addEventListener('DOMContentLoaded', function() {
-
  
   var piczContainer = document.querySelector('.picz-container');
   piczContainer.addEventListener('click', function(event) {
-
     if (event.target.classList.contains('pic-thumbnail')) {
       event.target.parentNode.querySelector('.openedPic').classList.remove('hidden');
       document.querySelector('.backdrop').classList.remove('hidden');
@@ -87,7 +80,25 @@ window.addEventListener('DOMContentLoaded', function() {
       event.target.parentNode.classList.add('hidden');
       document.querySelector('.backdrop').classList.add('hidden');
     }
+    else if (event.target.classList.contains('pic-delete-button')) {
+      console.log("== attempting a delete (index.js)");
+      var pic = event.target.parentNode.parentNode;
+      console.log(pic);
+      var index = Array.from(pic.parentNode.children).indexOf(pic);
+      var request = new XMLHttpRequest();
+      var subID = getSubID();
+      var url = url = "/subs/" + subID + "/deletePic";
+      request.open("DELETE", url);
+    
+      var requestBody = JSON.stringify({
+        pos: index
+      });
 
+      console.log(requestBody);
+
+      request.setRequestHeader('Content-Type', 'application/json');
+      request.send(requestBody);
+    }
   });
 
   var createPicButton = document.getElementById('create-picz-button');
@@ -99,9 +110,6 @@ window.addEventListener('DOMContentLoaded', function() {
      }
   var modalAcceptButton = document.querySelector('.modal-accept-button');
   modalAcceptButton.addEventListener('click', handleAcceptClick);
-
-
-
 });
 
 

@@ -97,6 +97,21 @@ app.post('/subs/:sub/addPic', function (req, res, next) {
   else next();
 });
 
+app.delete('/subs/:sub/deletePic', function(req, res, next) {
+  console.log("== attempting a delete");
+  var sub = req.params.sub.toLowerCase();
+  if (subs[sub]) {
+    if (req.body && (req.body.pos <= subs[sub].pics.length)) {
+      subs[sub].pics.splice(req.body.pos, 1);
+      fs.writeFile('./subData.json', JSON.stringify(subs, null, 2), 'utf8', function (err) {
+        if (err) res.status(500).send("Error writing with deleted post to JSON file");
+        else res.status(200).end();
+      });
+    }
+    else res.status(400).send("Request needs a JSON body with pos less than length of pics array");
+  }
+});
+
 app.use(express.static('public'));
 
 app.get('*', function(req, res) {
