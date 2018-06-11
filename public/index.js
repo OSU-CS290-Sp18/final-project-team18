@@ -22,6 +22,15 @@ function hideCreatePicModal(){
    clearInput();
 }
 
+function hidePic(){
+   var pic = document.querySelector('.pic');
+   var backdrop = document.querySelector('.backdrop');
+   var openedPic = document.querySelector('.openedPic');
+   pic.classList.add('hidden');
+   openedPic.classList.add('hidden');
+   backdrop.classList.add('hidden');
+}
+
 function getSubID(){
    var path = window.location.pathname;
    var pathParts = path.split('/');
@@ -68,6 +77,7 @@ function handleAcceptClick(){
    }
 }
 
+
 window.addEventListener('DOMContentLoaded', function() {
  
   var piczContainer = document.querySelector('.picz-container');
@@ -98,6 +108,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       request.setRequestHeader('Content-Type', 'application/json');
       request.send(requestBody);
+      hidePic();
     }
   });
 
