@@ -38,6 +38,21 @@ function getSubID(){
       return pathParts[2];
    }else return null;
 }
+
+function onSubPage(){
+   var path = windows.location.pathname;
+   var pathParts = path.split('/');
+   if(pathParts[1] === "subs") return true;
+   return false;
+}
+
+function search(){
+
+   var searchInput = document.getElementById('navbar-search-input');
+
+   var picContainer = document.querySelector('.picz-container');
+
+}
    
 function handleAcceptClick(){
    console.log("clicked");
@@ -63,7 +78,7 @@ function handleAcceptClick(){
 	    var picTemplate = Handlebars.templates.pic;
 	    var picHTML = picTemplate({
 	       linkInput: linkInput,
-		titleInput: titleInput
+	       titleInput: titleInput
 	    });
 	    var picContainer = document.querySelector('.picz-container');
 	    picContainer.insertAdjacentHTML('beforeend',picHTML);
@@ -121,6 +136,12 @@ window.addEventListener('DOMContentLoaded', function() {
      }
   var modalAcceptButton = document.querySelector('.modal-accept-button');
   modalAcceptButton.addEventListener('click', handleAcceptClick);
+
+  if(onSubPage()){
+     var searchButton == document.getElementById('navbar-search-button');
+     searchButton.addEventListener('click',search);
+  }
+
 });
 
 
