@@ -134,10 +134,6 @@ function handleSubAccept() {
 window.addEventListener('DOMContentLoaded', function() {
  
   
-  var exitModalButtons = document.getElementsByClassName('modal-close-button');
-  for(var i = 0; i < exitModalButtons.length; i++){
-	  exitModalButtons[i].addEventListener('click', hideCreatePicModal);
-  }
   
 
   if(onSubPage()){
@@ -178,11 +174,21 @@ window.addEventListener('DOMContentLoaded', function() {
     
     var modalAcceptButton = document.querySelector('.modal-accept-button');
     modalAcceptButton.addEventListener('click', handleAcceptClick);
+    
+    var exitModalButtons = document.getElementsByClassName('modal-close-button');
+    for(var i = 0; i < exitModalButtons.length; i++){
+  	  exitModalButtons[i].addEventListener('click', hideCreatePicModal);
+    }
 
     var searchButton = document.getElementById('navbar-search-button');
     searchButton.addEventListener('click',search);
   }
   else {
+    var exitModalButtons = document.getElementsByClassName('modal-close-button');
+    for(var i = 0; i < exitModalButtons.length; i++){
+  	  exitModalButtons[i].addEventListener('click', hideCreateSubModal);
+    }
+
     var subAcceptButton = document.querySelector('.sub-accept-button');
     subAcceptButton.addEventListener('click', handleSubAccept);
 
