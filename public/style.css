@@ -42,6 +42,33 @@ li{
   margin-bottom: 0px;
 }
 
+#create-sub-button {
+
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
+  font-size: 18px;
+  font-weight: normal;
+  background-color: #ff9933;
+  color: #000000;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1px;
+  cursor: pointer;
+}
+
+#sub-name-input {
+  width: 400px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.sub-accept-button {
+  background-color: #331a00;
+  color: #ff9933;
+}
+
 .subname {
  
   font-size: 40px;
@@ -186,6 +213,11 @@ p{
   overflow: scroll;
 }
 
+.sub-accept-button {
+  color: #ff9933;
+  background-color: #331a00;
+}
+
 .hidden {
   display: none;
 }
@@ -200,14 +232,18 @@ p{
   border-radius: 15px;
 }
 
-#pic-title-input {
-  width: 280px;
-  height: 16.5px;
+#pic-title-input {  
+  width: 400px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
-#pic-link-input {
-  width: 280px;
-  height: 16.5px;
+#pic-link-input {  
+  width: 400px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .modal-header {
