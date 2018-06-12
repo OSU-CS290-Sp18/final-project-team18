@@ -1,4 +1,26 @@
+//keeps track of all pics
+var pics = [];
 
+function parsePics(picElement){
+
+   var pic = {};
+   var URLInputElem = picElement.querySelector('.pic-image');
+   pic.link = URLInputElem.textContent.trim();
+   var titleInputElem = picElement.querySelector('.picTitle');
+   console.log("==titleElem: ", titleInputElem);
+   pic.title = titleInputElem.textContent.trim();
+   return pic;
+
+}
+
+function findPic(title, link){
+   
+   for(var i = 0; i < picCollection.length; i++){
+      if(picCollection[i].title === title && picCollection[i].link === link)
+	 return picCollection[i];
+   }
+
+}
 
 function showCreatePicModal(){
    var modal = document.querySelector('#create-pic-modal');
@@ -22,12 +44,11 @@ function hideCreatePicModal(){
    clearInput();
 }
 
-function hidePic(){
-   var pic = document.querySelector('.pic');
+function hidePic(picElem){
+   var picContainer = document.querySelector('pic-container');
    var backdrop = document.querySelector('.backdrop');
-   var openedPic = document.querySelector('.openedPic');
-   pic.classList.add('hidden');
-   openedPic.classList.add('hidden');
+   
+   picElem.classList.add('hidden');
    backdrop.classList.add('hidden');
 }
 
@@ -69,6 +90,11 @@ function handleAcceptClick(){
       request.open("POST",url);
 
       var requestBody = JSON.stringify({
+	 link: linkInput,
+	 title: titleInput
+      });
+
+      pics.push({
 	 link: linkInput,
 	 title: titleInput
       });
@@ -131,12 +157,21 @@ function handleSubAccept() {
   }
 }
 
+
+
 window.addEventListener('DOMContentLoaded', function() {
  
   
   
 
   if(onSubPage()){
+
+     var picCollection = document.getElementsByClassName('pic');
+     for(var i = 0; i < picCollection.length; i++){
+	pics.push(parsePics(picCollection[i]));
+     }
+
+
     var piczContainer = document.querySelector('.picz-container');
     piczContainer.addEventListener('click', function(event) {
       if (event.target.classList.contains('pic-thumbnail')) {
@@ -165,7 +200,8 @@ window.addEventListener('DOMContentLoaded', function() {
   
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(requestBody);
-        hidePic();
+	parsePics(pic);
+	hidePic(pic);
       }
     });
   
