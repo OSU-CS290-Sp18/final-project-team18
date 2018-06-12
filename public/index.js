@@ -67,11 +67,49 @@ function onSubPage(){
    return false;
 }
 
-function search(){
-
-   var searchInput = document.getElementById('navbar-search-input');
-
+function insertPic(title, link){
+   var picTemplate = Handlebars.templates.pic;
+   var picHTML = picTemplate({
+      linkInput: link,
+       titleInput: title
+   });
    var picContainer = document.querySelector('.picz-container');
+   picContainer.insertAdjacentHTML('beforeend',picHTML);
+}
+
+function picMatchesSearch(pic, searchInput){
+
+   if(!searchInput){
+      return true;
+   }
+
+   searchInput = searchInput.trim().toLowerCase();
+   return pic.title.toLowerCase().indexOf(searchInput) >= 0;
+
+}
+
+function clearSearch(){
+   document.querySelector('#navbar-search-input').value = '';
+   searchUpdate();
+}
+
+function searchUpdate(){
+
+   var searchInput = document.getElementById('navbar-search-input').value;
+   var picContainer = document.querySelector('.picz-container');
+
+   if(picContainer){
+      while(picContainer.lastChild){
+	 picContainer.removeChild(picContainer.lastChild);
+      }
+   }
+
+   pics.forEach(function(pic) {
+      if(picMatchesSearch(pic, searchInput)){
+	 insertPic(pic.title,pic.link);
+      }
+   });
+
 
 }
    
@@ -98,6 +136,7 @@ function handleAcceptClick(){
 	 link: linkInput,
 	 title: titleInput
       });
+	console.log("==pics: ", pics);
 
       request.addEventListener('load',function(event){
 	 if(event.target.status === 200){
@@ -200,8 +239,11 @@ window.addEventListener('DOMContentLoaded', function() {
   
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(requestBody);
-	parsePics(pic);
 	hidePic(pic);
+	parsePics(pic);
+	var i = pics.indexOf(pic);
+	pics.splice(i,1);
+	console.log("==pics: ", pics);
       }
     });
   
@@ -217,7 +259,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     var searchButton = document.getElementById('navbar-search-button');
-    searchButton.addEventListener('click',search);
+    searchButton.addEventListener('click',searchUpdate);
   }
   else {
     var exitModalButtons = document.getElementsByClassName('modal-close-button');
