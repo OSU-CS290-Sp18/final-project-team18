@@ -4,11 +4,11 @@ var pics = [];
 function parsePics(picElement){
 
    var pic = {};
-   var URLInputElem = picElement.querySelector('.pic-image');
-   pic.link = URLInputElem.textContent.trim();
-   var titleInputElem = picElement.querySelector('.picTitle');
-   console.log("==titleElem: ", titleInputElem);
-   pic.title = titleInputElem.textContent.trim();
+   var titleInput = picElement.querySelector('.picTitle');
+   var linkInput = picElement.querySelector('.pic-image');
+   pic.title = titleInput.textContent.trim();
+   console.log("==link ", linkInput);
+   pic.link = linkInput.src.trim();
    return pic;
 
 }
@@ -67,11 +67,11 @@ function onSubPage(){
    return false;
 }
 
-function insertPic(title, link){
+function insertPic(titleInput, linkInput){
    var picTemplate = Handlebars.templates.pic;
    var picHTML = picTemplate({
-      linkInput: link,
-       titleInput: title
+      link: linkInput,
+      title: titleInput
    });
    var picContainer = document.querySelector('.picz-container');
    picContainer.insertAdjacentHTML('beforeend',picHTML);
@@ -142,8 +142,8 @@ function handleAcceptClick(){
 	 if(event.target.status === 200){
 	    var picTemplate = Handlebars.templates.pic;
 	    var picHTML = picTemplate({
-	       linkInput: linkInput,
-	       titleInput: titleInput
+	       link: linkInput,
+	       title: titleInput
 	    });
 	    var picContainer = document.querySelector('.picz-container');
 	    picContainer.insertAdjacentHTML('beforeend',picHTML);
