@@ -43,7 +43,6 @@ li{
 }
 
 #create-sub-button {
-
   position: absolute;
   top: 1.5%;
   right: 5%;
@@ -55,6 +54,10 @@ li{
   border-radius: 10px;
   padding: 1px;
   cursor: pointer;
+}
+
+#create-sub-button:hover {
+  background-color: #7f2;
 }
 
 #sub-name-input {
@@ -69,8 +72,17 @@ li{
   color: #ff9933;
 }
 
+.sub-accept-button:hover {
+  background-color: #f2721d;
+  color: #ff9933;
+}
+
+.modal-close-button {
+  background-color: #ffffff;
+  color: #ff9933;
+}
+
 .subname {
- 
   font-size: 40px;
   height: 26px;
   width: 500px;
@@ -110,20 +122,21 @@ p{
 }
 
 #create-picz-button {
-  height: 30px;
-  float: left;
+  position: absolute;
+  top: 1.5%;
+  right: 5%;
   font-size: 18px;
   font-weight: normal;
-  background-color: #331a00;
-  color: #ff9933;
+  background-color: #ff9933;
+  color: #000000;
   border: 1px solid #333;
   border-radius: 10px;
   padding: 1px;
-  margin-top: 5px;
-  margin-bottom: 1px;
-  margin-right: 20px;
-  margin-left: 10px;
   cursor: pointer;
+}
+
+#create-picz-button:hover {
+  background-color: #7f2;
 }
 
 #navbar-search-input {
@@ -213,11 +226,6 @@ p{
   overflow: scroll;
 }
 
-.sub-accept-button {
-  color: #ff9933;
-  background-color: #331a00;
-}
-
 .hidden {
   display: none;
 }
@@ -298,8 +306,6 @@ p{
 
 .modal-footer button {
   font-size: 20px;
-  background-color: #fff;
-  color: #333;
   border: 1px solid #333;
   border-radius: 5px;
   padding: 10px;
@@ -310,14 +316,14 @@ p{
 .modal-footer .modal-close-button {
   position: static;
   color: #ff9933;
+  background-color: #000000;
 }
 
-.modal-footer .modal-close-button:hover {
-  background-color: #eee;
+.modal-footer .modal-close-button:hover { 
+  background-color: #ffffff;
 }
 
-.modal-footer .modal-accept-button { 
- 
+.modal-footer .modal-accept-button {  
   color: #ff9933; 
   background-color: #331a00;
 }
@@ -368,7 +374,7 @@ p{
   bottom: 5px;
   left: 10px;
   color: #000000;
-  background-color: #f90c0c;
+  background-color: #ffffff;
   font-size: 20px;
   border: 1px solid;
   border-color: #331a00;
@@ -377,6 +383,10 @@ p{
   margin-top: 20px;
   margin-right: 20px;
   cursor: pointer;
+}
+
+.pic-delete-button:hover {
+  background-color: #ff0000;
 }
 
 .tags {
